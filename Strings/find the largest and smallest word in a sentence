@@ -1,0 +1,42 @@
+#include<stdio.h>
+#include<string.h>
+
+void main()
+{
+    char str[100]={0},substr[100][100]={0};
+    
+scanf("%[^\n]s", str);
+int i=0,j=0,k=0;
+while (str[i]!='\0')
+{   if (str[i]==' ')
+{
+    i++;
+    j++;
+    k=0;
+}
+if (str[i]=='.') //-if you want to avoid '.' in your output then use this but it will also removed if '.' is inside the sentence as well as last ending '.'
+{
+    break;
+}
+    substr[j][k]=str[i];
+    i++,k++;
+} 
+int where_min_is,where_max_is; // for loacating the the position of lagrest and smallest word
+int min=strlen(substr[0]);
+int max=strlen(substr[0]);
+for (int p = 0; p <= j; p++)
+{ 
+ if(max<strlen(substr[p]))
+ {
+     max=strlen(substr[p]);
+     where_max_is=p;
+ }
+ if(min>strlen(substr[p]))
+ {
+     min=strlen(substr[p]);
+     where_min_is=p;
+ }
+}
+printf("%s %s",substr[where_max_is],substr[where_min_is]);
+
+}
